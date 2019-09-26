@@ -26,7 +26,6 @@
   "homepage": "https://github.com/spec-tacles/util#readme",
   "dependencies": {},
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-syntax-bigint": "^7.4.4",
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-typescript": "^7.6.0",
