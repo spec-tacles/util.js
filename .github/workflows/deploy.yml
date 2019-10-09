@@ -15,9 +15,8 @@ jobs:
       run: npm run docs
     - name: Prepare gh-pages directory
       run: |
-        export MAIN_REPO=$(pwd)
-        mkdir ../gh-pages
-        cd ../gh-pages
+        mkdir ./gh-pages
+        cd ./gh-pages
     - name: Checkout gh-pages branch
       uses: actions/checkout@v1
       with:
@@ -26,7 +25,7 @@ jobs:
       run: |
         export DOCS_DIRECTORY=$(echo ${{ github.ref }} | cut -d / -f 3-)
         rm -rf $DOCS_DIRECTORY
-        mv $MAIN_REPO/docs $DOCS_DIRECTORY
+        mv ../docs $DOCS_DIRECTORY
     - name: Push docs
       run: |
         git commit -am "Docs build for ${{ github.sha }}"
