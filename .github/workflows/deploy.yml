@@ -9,13 +9,13 @@ jobs:
     - name: Use Node.JS 12
       uses: actions/setup-node@v1
       with:
-        version: 12
+        node-version: 12
     - run: npm install
     - name: Generate docs
       run: npm run docs
     - name: Move docs
       run: |
-        git clone -b gh-pages . out
+        git clone -b origin/gh-pages . out
         export DOCS_DIRECTORY=$(echo ${{ github.ref }} | cut -d / -f 3-)
         rm -rf out/$DOCS_DIRECTORY
         mv docs out/$DOCS_DIRECTORY
