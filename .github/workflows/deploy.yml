@@ -20,5 +20,7 @@ jobs:
         rm -rf gh-pages/$DOCS_DIRECTORY
         mv -f docs gh-pages/$DOCS_DIRECTORY
         cd gh-pages
+        git config user.name "${GITHUB_ACTOR}"
+        git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
         git commit -am "Docs build for ${{ github.sha }}"
         git push
