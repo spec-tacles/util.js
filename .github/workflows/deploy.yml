@@ -15,7 +15,7 @@ jobs:
       run: |
         npm run docs
         REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        DOCS_DIRECTORY=$(echo ${{ github.ref }} | cut -d / -f 3-)
+        DOCS_DIRECTORY=$(echo ${{ github.ref }} | cut -d / -f 3- | sed -r 's/[\/\\]+/_/g')
         git clone -b gh-pages $REPO gh-pages
         rm -rf gh-pages/$DOCS_DIRECTORY
         mv -f docs gh-pages/$DOCS_DIRECTORY
