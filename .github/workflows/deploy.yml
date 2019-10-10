@@ -12,21 +12,12 @@ jobs:
         node-version: 12
     - run: npm install
     - name: Generate docs
-      run: npm run docs
-    - name: Prepare gh-pages directory
       run: |
-        mkdir ./gh-pages
-        cd ./gh-pages
-    - name: Checkout gh-pages branch
-      uses: actions/checkout@v1
-      with:
-        ref: gh-pages
-    - name: Move docs
-      run: |
+        npm run docs
+        git clone -b gh-pages . gh-pages
         export DOCS_DIRECTORY=$(echo ${{ github.ref }} | cut -d / -f 3-)
-        rm -rf $DOCS_DIRECTORY
-        mv ../docs $DOCS_DIRECTORY
-    - name: Push docs
-      run: |
+        rm -rf gh-pages/$DOCS_DIRECTORY
+        mv -f docs gh-pages/$DOCS_DIRECTORY
+        cd gh-pages
         git commit -am "Docs build for ${{ github.sha }}"
         git push
