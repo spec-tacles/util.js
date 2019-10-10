@@ -14,8 +14,9 @@ jobs:
     - name: Generate docs
       run: |
         npm run docs
-        git clone -b gh-pages . gh-pages
-        export DOCS_DIRECTORY=$(echo ${{ github.ref }} | cut -d / -f 3-)
+        REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        DOCS_DIRECTORY=$(echo ${{ github.ref }} | cut -d / -f 3-)
+        git clone -b gh-pages $REPO gh-pages
         rm -rf gh-pages/$DOCS_DIRECTORY
         mv -f docs gh-pages/$DOCS_DIRECTORY
         cd gh-pages
