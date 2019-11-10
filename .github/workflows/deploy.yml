@@ -13,11 +13,14 @@ jobs:
     - run: npm install
     - name: Generate docs
       run: npm run docs
+    - name: Checkout docs branch
+      uses: actions/checkout@v1
+      with:
+        path: ./gh-pages
+        ref: refs/heads/gh-pages
     - name: Move docs
       run: |
-        REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
         DOCS_DIRECTORY=$(echo ${{ github.ref }} | cut -d / -f 3- | sed -r 's/[\/\\]+/_/g')
-        git clone -b gh-pages --single-branch $REPO gh-pages
         rm -rf gh-pages/$DOCS_DIRECTORY
         mv -f docs gh-pages/$DOCS_DIRECTORY
     - name: Commit docs
