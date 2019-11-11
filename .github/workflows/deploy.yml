@@ -11,4 +11,4 @@ jobs:
       with:
         node-version: 12
     - run: npm install
-    - run: spec-tacles/action-docs@master
+    - uses: spec-tacles/action-docs@master
