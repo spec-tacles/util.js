@@ -11,6 +11,6 @@ jobs:
       with:
         node-version: 12
     - run: npm install
-    - uses: spec-tacles/action-docs@master
+    - uses: spec-tacles/action-docs@v1
       with:
         githubToken: ${{ secrets.GITHUB_TOKEN }}
