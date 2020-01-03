@@ -11,8 +11,11 @@ jobs:
       with:
         node-version: 12
     - run: npm install
-    - uses: JamesIves/github-pages-deploy-action@releases/v3
+    - name: Build docs
+      run: npm run docs
+    - name: Deploy docs
+      uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
         FOLDER: docs
