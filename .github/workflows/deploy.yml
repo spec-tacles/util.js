@@ -11,6 +11,8 @@ jobs:
       with:
         node-version: 12
     - run: npm install
-    - uses: spec-tacles/action-docs@v1
+    - uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: docs
