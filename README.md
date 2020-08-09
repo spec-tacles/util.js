@@ -1,4 +1,4 @@
-# Spectacles Utils
+# Spectacles Utils ([moved](https://github.com/spec-tacles/spectacles.js))
 
 Various utilities for interacting with Discord and using Spectacles.
 
